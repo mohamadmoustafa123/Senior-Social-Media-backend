@@ -22,7 +22,7 @@ router.post("/insertPost", requireAuth, upload.single("image"), async (req, res)
   const { description } = req.body;
   try {
     const imageUrl = req.file
-      ? `http://localhost:3000/uploads/${req.file.filename}`
+      ? `http://senior-social-media-backend-production.up.railway.app/uploads/${req.file.filename}`
       : "";
 
     const newPost = new Posts({
@@ -42,7 +42,7 @@ router.post("/insertVideo", requireAuth, upload.single("image"), async (req, res
   const { description } = req.body;
   try {
     const imageUrl = req.file
-      ? `http://localhost:3000/uploads/${req.file.filename}`
+      ? `http://senior-social-media-backend-production.up.railway.app/uploads/${req.file.filename}`
       : "";
 
     const newPost = new Posts({
@@ -125,7 +125,7 @@ router.put("/update/:postId", requireAuth, upload.single("image"), async (req, r
       post.description = description;
     }
     if (req.file) {
-      post.image = `http://localhost:3000/uploads/${req.file.filename}`;
+      post.image = `http://senior-social-media-backend-production.up.railway.app/uploads/${req.file.filename}`;
     }
     await post.save();
     let updated = await Posts.findById(post._id).populate("userId").lean();
