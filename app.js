@@ -29,13 +29,16 @@ app.use("/api/stories",storyRoutes)
 app.use("/api/comments",commentsRoutes)
 app.use("/api/voice",voiceRoutes)
 
+const port = process.env.PORT || 3000;
+
 mongoose.connect(process.env.MONGO_URL)
-.then(()=>{
-    console.log("connected to MongDB");
-    app.listen(process.env.PORT,()=>{
-        console.log("server running on port ",process.env.PORT)
-    })
+.then(() => {
+    console.log("connected to MongoDB");
 })
-.catch((err)=>{
-    console.error("Database connection error",err)
-})
+.catch((err) => {
+    console.error("MongoDB connection error:", err);
+});
+
+app.listen(port, '0.0.0.0', () => {
+    console.log("server running on port", port);
+});
