@@ -20,7 +20,7 @@ router.post("/signup", async (req, res) => {
       email,
       password: hashedPassword,
       image:
-        "http://senior-social-media-backend-production.up.railway.app/publicImg/pngfind.com-placeholder-png-6104451.png",
+        "https://senior-social-media-backend-production.up.railway.app/publicImg/pngfind.com-placeholder-png-6104451.png",
     });
     await newUser.save();
     const token = jwt.sign({ id: newUser._id }, process.env.SECRET_KEY, {
@@ -133,7 +133,7 @@ router.put("/update-image", requireAuth, upload.single("image"), async (req, res
       return res.status(400).json({ message: "No file uploaded" });
     }
 
-    const imageUrl = `http://senior-social-media-backend-production.up.railway.app/uploads/${req.file.filename}`;
+    const imageUrl = `https://senior-social-media-backend-production.up.railway.app/uploads/${req.file.filename}`;
 
     const updatedDoc = await User.findOneAndUpdate(
       { _id: req.userId },

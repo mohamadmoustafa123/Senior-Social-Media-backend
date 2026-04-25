@@ -20,7 +20,7 @@ const upload = multer({ storage });
 router.post("/insertStory", requireAuth, upload.single("image"), async (req, res) => {
   try {
     const imageUrl = req.file
-      ? `http://senior-social-media-backend-production.up.railway.app/uploads/${req.file.filename}`
+      ? `https://senior-social-media-backend-production.up.railway.app/uploads/${req.file.filename}`
       : "";
     const newStory = new Story({
       image: imageUrl,
